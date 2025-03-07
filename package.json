@@ -1,17 +1,20 @@
 {
   "name": "create-mixlayer",
   "version": "0.0.1-alpha.0",
-  "main": "index.js",
-  "bin": "index.js",
+  "bin": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rspack build && chmod +x dist/index.js",
     "dev": "rspack dev"
   },
-  "keywords": [],
+  "keywords": [
+    "ai",
+    "mixlayer",
+    "llm"
+  ],
   "author": "Zack Angelo <zack@mixlayer.com>",
   "license": "Apache-2.0",
-  "description": "",
+  "description": "Starter pack templates for mixlayer JS/TS apps",
   "devDependencies": {
     "@clack/prompts": "^0.10.0",
     "@rspack/cli": "^1.1.8",
