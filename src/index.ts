@@ -1,4 +1,12 @@
-import { cancel, isCancel, note, outro, select, text } from "@clack/prompts";
+import {
+  cancel,
+  confirm,
+  isCancel,
+  note,
+  outro,
+  select,
+  text,
+} from "@clack/prompts";
 import deepmerge from "deepmerge";
 import minimist from "minimist";
 import { execSync } from "node:child_process";
@@ -236,8 +244,8 @@ type Argv = {
   help?: boolean;
   dir?: string;
   template?: string;
-  // override?: boolean;
-  // tools?: string | string[];
+  git?: boolean;
+  override?: boolean;
 };
 
 function logHelpMessage(templates: string[]) {
@@ -249,6 +257,8 @@ function logHelpMessage(templates: string[]) {
      -h, --help       display help for command
      -d, --dir        create project in specified directory   
      -t, --template   select template
+     -o, --override   override existing project
+     -g, --git        initialize git repository
 
    Templates:
 
@@ -273,7 +283,7 @@ function isEmptyDir(path: string) {
 
 async function main() {
   const createRoot = __dirname;
-  const templates = ["typescript"];
+  const templates = ["typescript", "javascript"];
 
   const argv = minimist<Argv>(process.argv.slice(2), {
     alias: { h: "help", d: "dir", t: "template" },
@@ -340,7 +350,7 @@ async function main() {
     }
   }
 
-  const template = await getTemplate();
+  const template = argv.template ?? (await getTemplate());
   const templateSrcFolder = path.join(templatesRoot, `template-${template}`);
   const commonSrcFolder = path.join(templatesRoot, "common");
 
@@ -357,11 +367,22 @@ async function main() {
     isMergePackageJson: true,
   });
 
+  if (!fs.existsSync(path.join(destFolder, ".git"))) {
+    const installGit =
+      argv.git ??
+      checkCancel<string>(
+        await confirm({ message: "Initialize git repository?" })
+      );
+
+    if (installGit) {
+      execSync("git init", { cwd: destFolder, stdio: "ignore" });
+    }
+  }
+
   const nextSteps = [
     `1. ${color.cyan(`cd ${targetDir}`)}`,
-    `2. ${color.cyan("git init")} ${color.dim("(optional)")}`,
-    `3. ${color.cyan(`${pkgManager} install`)}`,
-    `4. ${color.cyan(`${pkgManager} run dev`)}`,
+    `2. ${color.cyan(`${pkgManager} install`)}`,
+    `3. ${color.cyan(`${pkgManager} run dev`)}`,
   ];
 
   note(nextSteps.map((step) => color.reset(step)).join("\n"), "Next steps");
