@@ -1,7 +1,9 @@
 {
   "name": "create-mixlayer",
   "version": "0.0.1-alpha.0",
-  "bin": "./dist/index.js",
+  "bin": {
+    "create-mixlayer": "dist/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rspack build && chmod +x dist/index.js",
@@ -11,6 +13,10 @@
     "ai",
     "mixlayer",
     "llm"
+  ],
+  "files": [
+    "template-*",
+    "dist"
   ],
   "author": "Zack Angelo <zack@mixlayer.com>",
   "license": "Apache-2.0",
@@ -26,5 +32,9 @@
     "picocolors": "^1.1.1",
     "rslog": "^1.2.3"
   },
-  "packageManager": "pnpm@9.13.2"
+  "packageManager": "pnpm@9.13.2",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
