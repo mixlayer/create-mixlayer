@@ -12,27 +12,12 @@ module.exports = {
         test: /\.txt$/,
         type: "asset/source",
       },
-      {
-        test: /\.ts$/,
-        exclude: [/node_modules/],
-        loader: "builtin:swc-loader",
-        options: {
-          jsc: {
-            parser: {
-              syntax: "typescript",
-            },
-          },
-        },
-        type: "javascript/auto",
-      },
     ],
   },
-  entry: "./src/index.ts",
+  entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
-    // The main output file (ES module)
     filename: "main.js",
-    // Tell Rspack to emit a module
     library: {
       type: "module",
     },

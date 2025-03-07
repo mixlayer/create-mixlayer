@@ -4,6 +4,7 @@
     "skipLibCheck": true,
     "useDefineForClassFields": true,
 
+    "target": "ESNext",
     /* modules */
     "module": "ESNext",
     "moduleResolution": "bundler",

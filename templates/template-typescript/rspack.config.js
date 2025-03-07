@@ -1,25 +1,17 @@
 const path = require("node:path");
-const { rspack } = require("@rspack/core");
 
 module.exports = {
-  plugins: [
-    new rspack.BannerPlugin({
-      banner: "#!/usr/bin/env node",
-      raw: true,
-    }),
-  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  target: "node",
-  node: {
-    __dirname: false,
-    __filename: false,
-  },
   module: {
     rules: [
+      {
+        test: /\.txt$/,
+        type: "asset/source",
+      },
       {
         test: /\.ts$/,
         exclude: [/node_modules/],
@@ -29,6 +21,7 @@ module.exports = {
             parser: {
               syntax: "typescript",
             },
+            target: "es2023",
           },
         },
         type: "javascript/auto",
@@ -39,7 +32,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     // The main output file (ES module)
-    filename: "index.js",
+    filename: "main.js",
+    // Tell Rspack to emit a module
+    library: {
+      type: "module",
+    },
+  },
+  experiments: {
+    outputModule: true,
   },
   optimization: {
     minimize: false,

@@ -1,0 +1,20 @@
+name = "my-chat-bot"
+
+[[models]]
+alias = "small"
+
+[local]
+name = "llama3-8b-instruct"
+max-seq-len = 8192
+max-batch-size = 32
+alloc-blocks = 512
+block-size = 16
+
+[cloud]
+
+
+[[models]]
+name = "llama3-8b-guard"
+alias = "guard"
+max-seq-len = 1024
+max-batch-size = 2
