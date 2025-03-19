@@ -357,6 +357,7 @@ async function main() {
   copyFolder({
     from: commonSrcFolder,
     to: destFolder,
+    packageName,
   });
 
   copyFolder({

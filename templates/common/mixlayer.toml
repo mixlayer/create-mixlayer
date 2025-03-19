@@ -16,4 +16,4 @@ block-size = 16              # size of each block in tokens
 
 # allow cloud deployment 
 [models.chat.cloud]
-model = "llama3-8b-instruct-free"
+model = "llama3.1-8b-instruct-small"
