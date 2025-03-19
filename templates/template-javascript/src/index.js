@@ -6,9 +6,17 @@ export default async function main(request) {
   // open a context window on the default model
   const seq = await open();
 
-  // check for the existence of the messages param
+  // check for the existence of the messages param, respond
+  // with a message if it doesn't exist
   if (!request?.params?.messages || !Array.isArray(request.params.messages)) {
-    throw new Error("messages param must be an array");
+    await seq.append(
+      "The user didn't say anything. Please ask them to provide a message.",
+      { role: "system", hidden: true }
+    );
+
+    await assistant(seq).gen({ temperature: 0.4 });
+
+    return;
   }
 
   // prepend the system prompt to the messages
