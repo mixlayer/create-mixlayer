@@ -30,16 +30,20 @@ module.exports = {
   },
   entry: "./src/index.ts",
   output: {
+    chunkLoading: false,
     path: path.resolve(__dirname, "dist"),
-    // The main output file (ES module)
     filename: "main.js",
-    // Tell Rspack to emit a module
+    publicPath: "",
     library: {
       type: "module",
     },
   },
   experiments: {
     outputModule: true,
+  },
+  performance: {
+    maxAssetSize: 10000000,
+    maxEntrypointSize: 10000000,
   },
   optimization: {
     minimize: false,

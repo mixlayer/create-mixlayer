@@ -16,8 +16,10 @@ module.exports = {
   },
   entry: "./src/index.js",
   output: {
+    chunkLoading: false,
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
+    publicPath: "",
     library: {
       type: "module",
     },
