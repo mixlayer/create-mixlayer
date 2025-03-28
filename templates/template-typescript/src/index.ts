@@ -1,8 +1,14 @@
 import { assistant, open } from "@mixlayer/llm";
 import SYSTEM_PROMPT from "./system.txt";
+import { BANNER } from "./banner.txt";
 
 // a simple chat bot
 export default async function main(request: any) {
+  // @ts-ignore
+  if (process.env.MIXLAYER_ENV === "development") {
+    console.log(BANNER);
+  }
+
   // open a context window on the default model
   const seq = await open();
 
