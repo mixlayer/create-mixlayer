@@ -15,12 +15,18 @@ export default async function main(request: any) {
   // check for the existence of the messages param, respond
   // with a message if it doesn't exist
   if (!request?.params?.messages || !Array.isArray(request.params.messages)) {
+    console.log("no messages provided, responding with a greeting");
+
     await seq.append(
       "The user didn't say anything. Please ask them to provide a message.",
       { role: "system", hidden: true }
     );
 
+    console.log("generating a reply");
+
     await assistant(seq).gen({ temperature: 0.4 });
+
+    console.log("execution finished");
 
     return;
   }
