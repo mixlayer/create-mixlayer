@@ -9,12 +9,16 @@ export default async function main(request) {
     console.log(BANNER);
   }
 
+  console.log("execution started");
+
   // open a context window on the default model
   const seq = await open();
 
   // check for the existence of the messages param, respond
   // with a message if it doesn't exist
   if (!request?.params?.messages || !Array.isArray(request.params.messages)) {
+    console.log("no messages provided, responding with a greeting");
+
     await seq.append(
       "The user didn't say anything. Please ask them to provide a message.",
       { role: "system", hidden: true }
@@ -39,6 +43,10 @@ export default async function main(request) {
     });
   }
 
+  console.log("generating a reply");
+
   // generate a reply from the model
   await assistant(seq).gen({ temperature: 0.2 });
+
+  console.log("execution finished");
 }
