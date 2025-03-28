@@ -1,6 +1,16 @@
 # Mixlayer project
 
-An AI API project that uses the Mixlayer framework.
+An AI project that uses the Mixlayer framework.
+
+## Prerequisites
+
+Install the Mixlayer CLI:
+
+Mac OS X (arm64):
+
+```
+brew install mixlayer-cli
+```
 
 ## Setup
 

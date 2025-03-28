@@ -1,19 +1,7 @@
 # mixlayer AI model configuration
-#
-# This file defines a single "chat" model that will be 
-# selected by default when calling `open()`. 
 
 [models.chat]
-default = true
+default = true # selected by default when calling `open()`. 
 
-# allow model to run locally
-[models.chat.local]
-model = "llama3-8b-instruct"
-max-seq-len = 8192           # max context length
-max-batch-size = 32          # max concurrent sequences
-alloc-blocks = 512           # paged attention blocks to allocate
-block-size = 16              # size of each block in tokens
-
-# allow cloud deployment 
 [models.chat.cloud]
-model = "llama3.1-8b-instruct-small"
+model = "meta/llama3.1-8b-instruct-free"
