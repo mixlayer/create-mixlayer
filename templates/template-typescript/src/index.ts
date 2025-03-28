@@ -22,11 +22,7 @@ export default async function main(request: any) {
       { role: "system", hidden: true }
     );
 
-    console.log("generating a reply");
-
     await assistant(seq).gen({ temperature: 0.4 });
-
-    console.log("execution finished");
 
     return;
   }
@@ -44,7 +40,10 @@ export default async function main(request: any) {
       hidden: true,
     });
   }
+  console.log("generating a reply");
 
   // generate a reply from the model
   await assistant(seq).gen({ temperature: 0.2 });
+
+  console.log("execution finished");
 }
