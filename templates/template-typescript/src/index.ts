@@ -1,6 +1,6 @@
 import { assistant, open } from "@mixlayer/llm";
 import SYSTEM_PROMPT from "./system.txt";
-import { BANNER } from "./banner.txt";
+import BANNER from "./banner.txt";
 
 // a simple chat bot
 export default async function main(request: any) {
