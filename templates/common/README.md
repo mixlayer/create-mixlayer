@@ -9,6 +9,7 @@ Install the Mixlayer CLI:
 Mac OS X (arm64):
 
 ```
+brew tap mixlayer/tap
 brew install mixlayer-cli
 ```
 

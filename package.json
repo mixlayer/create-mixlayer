@@ -6,7 +6,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rspack build && chmod +x dist/index.js",
+    "build": "rspack build && chmod +x dist/index.js && cp -r templates dist/",
     "dev": "rspack dev"
   },
   "keywords": [
@@ -15,7 +15,7 @@
     "llm"
   ],
   "files": [
-    "template-*",
+    "templates",
     "dist"
   ],
   "author": "Zack Angelo <zack@mixlayer.com>",
