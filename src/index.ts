@@ -20,7 +20,7 @@ function getTemplatesDir() {
   // Use process.argv[1] to get the actual script path at runtime
   const scriptPath = process.argv[1];
   const scriptDir = dirname(scriptPath);
-  return path.join(scriptDir, "create-mixlayer", "templates");
+  return path.join(scriptDir, "..", "create-mixlayer", "templates");
 }
 
 function cancelAndExit() {
