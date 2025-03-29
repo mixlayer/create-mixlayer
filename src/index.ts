@@ -16,21 +16,12 @@ import { fileURLToPath } from "node:url";
 import color from "picocolors";
 import { logger } from "rslog";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 // Function to get the templates directory path
 function getTemplatesDir() {
-  // Check if we're in development mode (running from source)
-  const isDev = process.env.NODE_ENV === "development";
-
-  if (isDev) {
-    // In development, templates are in the project root
-    return path.join(__dirname, "..", "templates");
-  } else {
-    // In production (installed via npm), templates are in node_modules
-    return path.join(__dirname, "templates");
-  }
+  // Use process.argv[1] to get the actual script path at runtime
+  const scriptPath = process.argv[1];
+  const scriptDir = dirname(scriptPath);
+  return path.join(scriptDir, "..", "templates");
 }
 
 function cancelAndExit() {
