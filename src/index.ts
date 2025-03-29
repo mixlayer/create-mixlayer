@@ -12,7 +12,6 @@ import minimist from "minimist";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path, { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import color from "picocolors";
 import { logger } from "rslog";
 
