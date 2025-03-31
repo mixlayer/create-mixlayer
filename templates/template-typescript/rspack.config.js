@@ -2,6 +2,7 @@ const path = require("node:path");
 
 module.exports = {
   resolve: {
+    extensions: [".ts", ".js", ".mjs", ".json"],
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
