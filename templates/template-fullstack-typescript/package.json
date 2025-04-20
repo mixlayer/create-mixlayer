@@ -1,0 +1,32 @@
+{
+  "name": "fetch-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rspack build",
+    "dev": "mxl dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "description": "",
+  "dependencies": {
+    "@mixlayer/llm": "0.2.2",
+    "hono": "^4.7.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.1.8",
+    "@rspack/core": "^1.1.8",
+    "@rspack/dev-server": "^1.1.1",
+    "@rspack/plugin-react-refresh": "^1.1.0",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "react-refresh": "^0.16.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
