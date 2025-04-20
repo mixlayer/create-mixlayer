@@ -20,8 +20,6 @@ function getTemplatesDir() {
   // Use process.argv[1] to get the actual script path at runtime
   const scriptPath = process.argv[1];
   const scriptDir = dirname(scriptPath);
-
-  console.log("scriptDir", scriptDir);
   return path.join(scriptDir, "..", "templates");
 }
 
