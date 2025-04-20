@@ -1,10 +1,8 @@
 {
-  "name": "fetch-test",
+  "name": "mxl-fullstack-template",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
   "scripts": {
-    "build": "rspack build",
+    "build": "echo \"Error: build not implemented\" && exit 1",
     "dev": "mxl dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +11,8 @@
   "license": "Apache-2.0",
   "description": "",
   "dependencies": {
-    "@mixlayer/llm": "0.2.2",
+    "@mixlayer/llm": "0.3.3",
+    "@mixlayer/react-chat": "0.0.2",
     "hono": "^4.7.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -23,10 +22,15 @@
     "@rspack/core": "^1.1.8",
     "@rspack/dev-server": "^1.1.1",
     "@rspack/plugin-react-refresh": "^1.1.0",
+    "@tailwindcss/postcss": "^4.1.4",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
     "react-refresh": "^0.16.0",
+    "tailwindcss": "^4.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
-  }
+  },
+  "type": "module"
 }

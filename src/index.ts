@@ -20,7 +20,9 @@ function getTemplatesDir() {
   // Use process.argv[1] to get the actual script path at runtime
   const scriptPath = process.argv[1];
   const scriptDir = dirname(scriptPath);
-  return path.join(scriptDir, "..", "create-mixlayer", "templates");
+
+  console.log("scriptDir", scriptDir);
+  return path.join(scriptDir, "..", "templates");
 }
 
 function cancelAndExit() {
@@ -54,7 +56,7 @@ async function getTemplate() {
 
 function mixlayerCliInstallCmd() {
   if (process.platform === "darwin") {
-    return "brew install mixlayer-cli";
+    return "brew tap mixlayer/tap && brew install mixlayer-cli";
   } else {
     //TODO: add other platforms
     return "See documentation for installation instructions";
