@@ -24,9 +24,6 @@ function EmptyState() {
       <div className="text-xl text-gray-700 font-semibold mt-8">
         Welcome to Mixlayer
       </div>
-      <div className="text-sm text-gray-500 mt-2">
-        Ask anything about your data.
-      </div>
     </div>
   );
 }
