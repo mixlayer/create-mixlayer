@@ -1,0 +1,11 @@
+assets = [
+  { src = "build/static/**/*", strip = "build/static", dest = "/" },
+  { src = "public/**/*", strip = "public", dest = "/" },
+]
+
+# mixlayer AI model configuration
+[models.chat]
+default = true # selected by default when calling `open()`. 
+
+[models.chat.cloud]
+model = "meta/llama3.1-8b-instruct-free"

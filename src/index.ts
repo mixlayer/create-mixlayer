@@ -20,7 +20,7 @@ function getTemplatesDir() {
   // Use process.argv[1] to get the actual script path at runtime
   const scriptPath = process.argv[1];
   const scriptDir = dirname(scriptPath);
-  return path.join(scriptDir, "..", "create-mixlayer", "templates");
+  return path.join(scriptDir, "..", "templates");
 }
 
 function cancelAndExit() {
@@ -36,22 +36,25 @@ export function checkCancel<T>(value: unknown) {
 }
 
 async function getTemplate() {
-  const language = checkCancel<string>(
-    await select({
-      message: `Select language`,
-      options: [
-        { value: "typescript", label: "TypeScript" },
-        { value: "javascript", label: "JavaScript" },
-      ],
-    })
-  );
+  // TODO: restore language options
+  // const language = checkCancel<string>(
+  //   await select({
+  //     message: `Select language`,
+  //     options: [
+  //       { value: "typescript", label: "TypeScript" },
+  //       { value: "javascript", label: "JavaScript" },
+  //     ],
+  //   })
+  // );
+
+  const language = "fullstack-typescript";
 
   return language;
 }
 
 function mixlayerCliInstallCmd() {
   if (process.platform === "darwin") {
-    return "brew install mixlayer-cli";
+    return "brew tap mixlayer/tap && brew install mixlayer-cli";
   } else {
     //TODO: add other platforms
     return "See documentation for installation instructions";
@@ -286,8 +289,7 @@ function isEmptyDir(path: string) {
 }
 
 async function main() {
-  const createRoot = __dirname;
-  const templates = ["typescript", "javascript"];
+  const templates = ["fullstack-typescript"];
 
   const argv = minimist<Argv>(process.argv.slice(2), {
     alias: { h: "help", d: "dir", t: "template" },
