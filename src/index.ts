@@ -18,7 +18,7 @@ import { logger } from "rslog";
 // Function to get the templates directory path
 function getTemplatesDir() {
   // Use process.argv[1] to get the actual script path at runtime
-  const scriptPath = process.argv[1];
+  const scriptPath = __filename; // process.argv[1];
   console.log("scriptPath", scriptPath);
   const scriptDir = dirname(scriptPath);
   console.log("scriptDir", scriptDir);
