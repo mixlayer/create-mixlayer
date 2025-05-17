@@ -12,7 +12,7 @@ const targets = ["chrome >= 87", "edge >= 88", "firefox >= 78", "safari >= 14"];
 
 export default defineConfig({
   context: __dirname,
-  mode: "development",
+  mode: isDev ? "development" : "production",
   output: {
     path: path.resolve(process.cwd(), "build/static"),
   },
@@ -45,8 +45,8 @@ export default defineConfig({
                 transform: {
                   react: {
                     runtime: "automatic",
-                    development: true,
-                    refresh: true,
+                    development: isDev,
+                    refresh: isDev,
                   },
                 },
               },
@@ -66,14 +66,12 @@ export default defineConfig({
     new rspack.HtmlRspackPlugin({
       template: "./index.html",
     }),
-    new ReactRefreshRspackPlugin(),
-    // new rspack.HotModuleReplacementPlugin(),
+    isDev && new ReactRefreshRspackPlugin(),
     new rspack.SourceMapDevToolPlugin({
       filename: "[file].map",
     }),
   ].filter(Boolean),
   optimization: {
-    // minimize: false,
     minimizer: [
       new rspack.SwcJsMinimizerRspackPlugin(),
       new rspack.LightningCssMinimizerRspackPlugin({
